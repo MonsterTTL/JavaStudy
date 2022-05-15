@@ -4,16 +4,22 @@ public class Dog {
     {
         Dog one = new Dog();
         Dog[] arr = new Dog[3];
-        Dog two = null;
+        //Dog two = null;
 
         arr[0] = new Dog();
         arr[1] = new Dog();
-        arr[2] = one;
+
         arr[0].name = "Geogre";
         arr[1].name = "Pual";
-        arr[2].name = "Rfter";
+
         for(int cnt = 0;cnt < 3; cnt++)
         {
+            if(arr[cnt] == null)
+            {
+                System.out.println("arr" + cnt +" It is not avaliable!");
+                continue;
+            }
+
             arr[cnt].Bark();
         }
 
