@@ -10,7 +10,7 @@ public class Dog {
         arr[1] = new Dog();
         String a = new String("Pual");
         String b = new String("Pual");
-        String c = "Pual";
+        String c = "Pual"+'d';
         String d = "Pual";
         arr[0].setName(a);
         arr[1].setName(b);
