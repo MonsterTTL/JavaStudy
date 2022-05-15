@@ -1,6 +1,7 @@
 public class IntToString {
     private String cur ;
     private int curr = 0;
+
     public void setCur(String temp)
     {
         cur = temp;
