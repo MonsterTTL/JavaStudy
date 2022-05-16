@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <conio.h>
+#include <time.h>
 
 #define MAX 100
 #define ACCOUNT_MAX 20
@@ -44,6 +45,12 @@ typedef struct user{
     char password[ACCOUNT_MAX]; //密码
     Authority_Priorty priorty; // 优先级
     long money; // 余额
+    //开始玄学
+    int hp;
+    int grade;
+    int defense;
+    int attack;
+    int speed;
 }User;
 
 typedef struct list{
@@ -56,7 +63,12 @@ typedef enum login_statue{
     Successful = 1,
     Fail = 0
 }Login_Statue;
-
+//战斗系统(bushi)
+Statue WarSystem(char Player1[],char Player2[],int* WhoWin);//双人的战斗系统,Player1为操作用户
+int DamageCul(int attack,int * lucky);//伤害计算系统
+Statue IsDead(User * P1,User * P2);//死亡判定
+int endDamege(int Damage,User Player);//防御判定
+void DamageResult(int result,User * Player);//伤害结算
 
 //This is my ManagerSystem function
 User System;//系统专用变量
@@ -71,6 +83,7 @@ Statue Read_User_Information(char * usename,User * cur);//读取用户信息
 Statue User_ChangePassword(void);//改变用户密码
 Statue ChangePassWord_process(char password[]);
 Statue User_UnsubscribeAccount(void);//用户注销
+Statue User_ChangeMoney(void);//用户修改金额
     //系统级
 void System_Menu(void);//显示菜单
 void UserLoginMenu(void);//用户成功登录之后的界面
@@ -120,8 +133,16 @@ char * s_gets(char * st,int n);
 
 int main(void)
 {   
+  //int test = 0;
+  //WarSystem("S1","S2",&test);
+  //printf("%d  ",test);
   //DelectDataPriod("us",5,5);
   //System_Delete_Process("us");
+  //while(1);
+  //char temp[20] = {0};
+  //int tt = 102;
+  //itoa(tt,temp,10);
+  //printf("%s %d",temp,strlen(temp));
   //while(1);
   while(1) 
    { 
@@ -521,7 +542,9 @@ Statue Register_process(char usename[],char password[]) //具体的注册过程
             printf("This account has been created !!\n");
             return Error;
         }
-    
+   int inituse = 0; 
+   char tempuse[20] = {0};
+   srand((unsigned int)(time(NULL)));
    Create_A_File_version1(usename);
    
    Write_A_File_version3(usename,usename,20);
@@ -532,8 +555,26 @@ Statue Register_process(char usename[],char password[]) //具体的注册过程
   
    Write_A_File_version3(usename,"0",20);
    
+   Write_A_File_version3(usename,"1",20);//等级
+
+   inituse = 50 + rand()%6;
+   itoa(inituse,tempuse,10);
+   Write_A_File_version3(usename,tempuse,20);//血量
+
+   inituse = 10 + rand()%6;
+   itoa(inituse,tempuse,10);
+   Write_A_File_version3(usename,tempuse,20);//防御
    //Write_A_File_version1(usename,"#");
   // Write_A_File_version2(SYS_ACCOUNT," ",1,Backward);
+   
+   inituse = 10 + rand()%6;
+   itoa(inituse,tempuse,10);
+   Write_A_File_version3(usename,tempuse,20);//攻击
+
+   inituse = 10 + rand()%6;
+   itoa(inituse,tempuse,10);
+   Write_A_File_version3(usename,tempuse,20);//速度
+
    Delete_AendLetter(SYS_ACCOUNT,1);
    Write_A_File_version3(SYS_ACCOUNT,usename,20);
    Write_A_File_version1(SYS_ACCOUNT,"#"); 
@@ -595,10 +636,20 @@ Statue Read_User_Information(char * usename,User * cur)
 {   
     char priorty[ACCOUNT_MAX] = {0};
     char money[ACCOUNT_MAX] = {0};
+    char grade[ACCOUNT_MAX] = {0};
+    char defense[ACCOUNT_MAX] = {0};
+    char attack[ACCOUNT_MAX] = {0};
+    char speed[ACCOUNT_MAX] = {0};
+    char hp[ACCOUNT_MAX] = {0};
     Read_All_Data_version2(usename,cur -> account,0,20);
     Read_All_Data_version2(usename,cur -> password,20,20);
     Read_All_Data_version2(usename,priorty,40,20);
     Read_All_Data_version2(usename,money,60,20);
+    Read_All_Data_version2(usename,grade,80,20);
+    Read_All_Data_version2(usename,hp,100,20);
+    Read_All_Data_version2(usename,defense,120,20);
+    Read_All_Data_version2(usename,attack,140,20);
+    Read_All_Data_version2(usename,speed,160,20);
     if(strcmp(priorty,"User_priorty") == 0)
     {
         cur -> priorty = User_priorty;
@@ -608,6 +659,11 @@ Statue Read_User_Information(char * usename,User * cur)
         cur -> priorty = System_priorty;
     }
     cur -> money = (long)(atoi(money));
+    cur -> grade = (int)(atoi(grade));
+    cur -> defense = (int)(atoi(defense));
+    cur -> attack = (int)(atoi(attack));
+    cur -> speed = (int)(atoi(speed));
+    cur -> hp = (int)(atoi(hp));
     return OK;
 }
 
@@ -621,6 +677,7 @@ Statue System_ShowInformation(User * name)
     else
         {
             printf("Account:%s \nPassword:%s\nMoney:%d\nPriorty:(1 = system,0 = user) %d\n",name ->account,name ->password,name ->money,name ->priorty);
+            printf("hp: %d\ngrade : %d \ndefense : %d\nattack:%d\nspeed:%d\n",name->hp,name->grade,name->defense,name->attack,name->speed);
         }
     return OK;
 }
@@ -717,6 +774,7 @@ void UserLoginMenu(void) //用户菜单
     printf("*****        2.login out your account         **********************\n");
     printf("*****           3.unsubscribe your account                 *********\n");
     printf("*********             4.Change your password          **************\n");
+    printf("********          5.Change your money(need system prioty)    *******\n");
     printf("********           any other key for exit        *******************\n");
     printf("********************************************************************\n");
     
@@ -737,9 +795,13 @@ void UserLoginMenu(void) //用户菜单
                         getch();
                       return ;
             case '4':User_ChangePassword();
-                     Read_User_Information(System.account,&System);
+                     Read_User_Information(System.account,&System);//更新下修改的内容
                         getch();
-                        break;;
+                        break;
+            case '5':User_ChangeMoney();
+                    Read_User_Information(System.account,&System);
+                     getch();
+                     break;
             default : SystemPoint_Reset();
                       return ;
         }
@@ -1235,4 +1297,197 @@ Statue System_ChangePassword(void)
         printf("Cant Change!\n");
         return Error;
     }
+}
+
+Statue User_ChangeMoney(void)
+{
+    if(System.priorty == User_priorty)
+    {
+        printf("Sorry , you dont have the priorty!\n");
+        return Error;
+    }
+    int target = 0;
+    printf("Please enter your target number:\n");
+    scanf("%d",&target);
+    getchar();
+    if(System_ChangeMoney_process(System.account,target) == OK)
+    {
+        printf("You have change your money!\n");
+        return OK;
+    }
+    else{
+        return Error;
+    }
+
+}
+
+
+Statue WarSystem(char Player1[],char Player2[],int* WhoWin)//双人的战斗系统,Player1为操作用户
+{
+    int select = 0;
+    if(IsFileExist(Player1) == No || IsFileExist(Player2) == No)
+    {
+        printf("Player is not exist!\n");
+        return Error;
+    }
+    User P1;User P2;
+    int speedflag = 0; 
+    int endresult = 0;
+    int luckyFlag = 0;
+    Read_User_Information(Player1,&P1);
+    Read_User_Information(Player2,&P2);
+    if(P1.speed >= P2.speed)
+    {
+        speedflag = 1;
+    }
+    else
+    {
+        speedflag = 2;
+    }
+    while(IsDead(&P1,&P2) == No)
+    {   luckyFlag = 0;
+        if(speedflag == 1)
+        {
+            printf("You attack first\n");
+            while((select = getch()) != '\r');
+            endresult = DamageCul(P1.attack,&luckyFlag);//一次伤害判定
+            endresult = endDamege(endresult,P2);//防御判定
+            if(luckyFlag == 1)
+            {
+                printf("You are so lucky!  \n");
+                while((select = getch()) != '\r');
+            }
+            
+            printf("You cause %-d damages in the end!\n",endresult);
+            DamageResult(endresult,&P2);
+            printf("%-s has %-d Hp left\n",P2.account,P2.hp);
+            while((select = getch()) != '\r');
+
+            if(P2.hp <= 0)
+            {
+                printf("You win!Congratulationgs!\n");
+                *WhoWin = 1;
+                while((select = getch()) != '\r');
+                return  OK;
+            }
+
+            printf("Then anther Player attack \n");
+            while((select = getch()) != '\r');
+
+            endresult = DamageCul(P2.attack,&luckyFlag);//一次伤害判定
+            endresult = endDamege(endresult,P1);//防御判定
+            if(luckyFlag == 1)
+            {
+                printf("%-s  is so lucky!  ",P2.account);
+                while((select = getch()) != '\r');
+            }
+            
+            printf("%-s cause %-d damages in the end!\n",P2.account,endresult);
+            DamageResult(endresult,&P1);
+            printf("You have %-d HP left\n",P1.hp);
+            while((select = getch()) != '\r');
+
+            if(P1.hp <= 0)
+            {
+                printf("You Lost!!\n");
+                *WhoWin = 2;
+                while((select = getch()) != '\r');
+                return  OK;
+            }
+
+        }
+        else
+        {
+            printf("Anther Player attack first\n");
+            while((select = getch()) != '\r');
+
+            endresult = DamageCul(P2.attack,&luckyFlag);//一次伤害判定
+            endresult = endDamege(endresult,P1);//防御判定
+            if(luckyFlag == 1)
+            {
+                printf("%-s  is so lucky!  \n",P2.account);
+                while((select = getch()) != '\r');
+            }
+            
+            printf("%-s cause %-d damages in the end!\n",P2.account,endresult);
+            DamageResult(endresult,&P1);
+            printf("You have %-d HP left\n",P1.hp);
+            while((select = getch()) != '\r');
+
+            if(P1.hp <= 0)
+            {
+                printf("You Lost!!\n");
+                *WhoWin = 2;
+                while((select = getch()) != '\r');
+                return  OK;
+            }
+
+            printf("Then You attack \n");
+            while((select = getch()) != '\r');
+            endresult = DamageCul(P1.attack,&luckyFlag);//一次伤害判定
+            endresult = endDamege(endresult,P2);//防御判定
+            if(luckyFlag == 1)
+            {
+                printf("You are so lucky!  \n");
+            }
+            while((select = getch()) != '\r');
+            printf("You cause %-d damages in the end!\n",endresult);
+            DamageResult(endresult,&P2);
+            printf("%-s has %-d Hp left\n",P2.account,P2.hp);
+            while((select = getch()) != '\r');
+
+            if(P2.hp <= 0)
+            {
+                printf("You win!Congratulationgs!\n");
+                *WhoWin = 1;
+                while((select = getch()) != '\r');
+                return  OK;
+            }
+
+        }
+    }
+
+
+
+}
+
+int DamageCul(int attack,int * lucky)//伤害计算系统
+{
+    srand((unsigned int)(time(NULL)));
+    *lucky = 0;
+    int flag = rand()%6;
+    int resultDamage = rand()%10 + attack;
+    if(flag == 5) //是否暴击
+    {
+        resultDamage *= 2;
+        *lucky = 1;
+    }
+    return resultDamage;
+}
+
+int endDamege(int Damage,User Player)//防御判定
+{
+    srand((unsigned int)(time(NULL)));
+    int rand1 = rand()%6;
+    if(Damage - Player.defense + rand1 > 0)
+      return (Damage - Player.defense + rand1 );
+    else
+      return 1;  
+}
+
+void DamageResult(int result,User * Player)//伤害结算
+{
+    Player->hp = Player->hp-result;
+    return ;
+}
+
+
+Statue IsDead(User * P1,User * P2)//死亡判定
+{
+    if(P1->hp <= 0 || P2 ->hp <=0)
+    {
+        return Yes;
+    }
+    else
+        return No;
 }
