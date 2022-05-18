@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class SimpleDotComTestDrive {
    /* public static void main(String []arg)
     {
@@ -16,15 +14,9 @@ public class SimpleDotComTestDrive {
 
         SimpleDotCom theDotCom = new SimpleDotCom();
         int randomNum =(int)(Math.random() * 5);
-        ArrayList<String> list = new ArrayList<String>();
-        String temp = "" + randomNum;
-        list.add(temp);
-        temp = "" + (randomNum+1);
-        list.add(temp);
-        temp = "" + (randomNum+2);
-        list.add(temp);
-        //int [] locations = {randomNum,randomNum+1,randomNum+2};
-        theDotCom.setLocationCells(list);
+
+        int [] locations = {randomNum,randomNum+1,randomNum+2};
+        theDotCom.setLocationCells(locations);
         boolean IsAlive = true;
 
         while(IsAlive == true)
@@ -34,17 +26,8 @@ public class SimpleDotComTestDrive {
             numOGuess ++;
             if(result.equals("kill"))
             {
-            	System.out.println("Kill");
                 IsAlive = false;
                 System.out.println("You took "+numOGuess+" guesses");
-            }
-            else if(result.equals("hit"))
-            {
-            	System.out.println("hit");
-            }
-            else if(result.equals("miss"))
-            {
-            	System.out.println("miss");
             }
         }
     }
