@@ -1,0 +1,3 @@
+Name: father
+Age: 12
+StudentNumber: 330522
