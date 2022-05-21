@@ -1,15 +1,34 @@
 
 public class Cat extends Animal {
-	public Cat() 
+//	public Cat() 
+//	{
+//		
+//	}
+//	public Cat(String name,int age,int height,int hight)//构造器
+//	{
+//		this.setName(name);
+//		this.setAge(age);
+//		this.setWeight(height);
+//		this.setHight(hight);
+//	}
+	
+	public Cat()
 	{
-		
+		super();
 	}
-	public Cat(String name,int age,int height,int hight)//构造器
+	
+	public Cat(int age)
 	{
-		this.setName(name);
-		this.setAge(age);
-		this.setWeight(height);
-		this.setHight(hight);
+		this("unknow",age,10,20);
+	}
+	
+	public Cat(String name,int age,int height,int hight)
+	{
+		super(name,age,height,hight);
+		//		Cat ret = (Cat) new Animal(name,age,height,hight);
+		
+		
+		//return (Cat)new Animal(name,age,height,hight);
 	}
 	public void bark()
 	{

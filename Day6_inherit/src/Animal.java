@@ -5,6 +5,17 @@ public class Animal {
 	private int hight = 0;
 	private int age = 0;
 	
+	public Animal()
+	{
+		
+	}
+	public Animal(String name,int age,int height,int hight)
+	{
+		this.name = name;
+		this.age = age;
+		this.hight = hight;
+		this.weight = height;
+	}
 	public void setName(String name)
 	{
 		this.name = name;

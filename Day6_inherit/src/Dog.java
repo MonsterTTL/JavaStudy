@@ -1,15 +1,24 @@
 
 public class Dog extends Animal {
-	public Dog() 
+//	public Dog() 
+//	{
+//		
+//	}
+//	public Dog(String name,int age,int height,int hight)//构造器
+//	{
+//		this.setName(name);
+//		this.setAge(age);
+//		this.setWeight(height);
+//		this.setHight(hight);
+//	}
+	public Dog()
 	{
-		
+		super();
 	}
-	public Dog(String name,int age,int height,int hight)//构造器
+	
+	public Dog(String name,int age,int height,int hight)
 	{
-		this.setName(name);
-		this.setAge(age);
-		this.setWeight(height);
-		this.setHight(hight);
+		super(name,age,height,hight);
 	}
 	public void bark()
 	{
