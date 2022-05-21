@@ -11,6 +11,14 @@ public class MainFunction {
 		System.out.println(show1);
 		System.out.println(show2);
 		
+		//String t1 = "haha";
+		//String t2 = "haha";
+		String t1 = new String("haha");
+		String t2 = new String("haha");
+		
+		
+		System.out.println(t1.equals(t2));
+		
 	}
 
 }
