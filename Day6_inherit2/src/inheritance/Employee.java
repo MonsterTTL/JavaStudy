@@ -38,7 +38,7 @@ public class Employee {
 		return (a+b);
 	}
 	
-	public static String add(String a,String b)
+	public static String add(String a,String b)//¾²Ì¬·½·¨
 	{
 		return (a+b);
 	}

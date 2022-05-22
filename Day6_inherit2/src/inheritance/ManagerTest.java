@@ -23,7 +23,9 @@ public class ManagerTest {
 		}
 		
 		if(staff[1] instanceof Manager)
-		  boss= (Manager) staff[1];
+		  System.out.println("True");
+		if(boss instanceof Employee)
+			System.out.println("true");
 		
 	}
 			
