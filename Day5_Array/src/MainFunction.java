@@ -15,6 +15,7 @@ public class MainFunction {
 		show = Arrays.toString(arry);
 		System.out.println(show);
 		arry = new int[] {100,2,3,5,7,11,17,18,19};
+		int[] arry2 = Arrays.copyOf(arry, 15);
 		for(int i:arry)
 		{
 			System.out.print(i + " ");
@@ -22,6 +23,8 @@ public class MainFunction {
 		System.out.println();
 		Arrays.sort(arry);
 		show = Arrays.toString(arry);
+		System.out.println(show);
+		show = Arrays.toString(arry2);
 		System.out.println(show);
 	}
 	
