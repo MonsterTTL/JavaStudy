@@ -29,7 +29,7 @@ public class MainFunction {
 		{
 			System.out.println(use);
 		}
-		bark.Bark(one[0]);
+		Doge.show(one[0]);
 		
 		
 	}
