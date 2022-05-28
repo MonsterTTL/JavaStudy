@@ -29,6 +29,7 @@ public class MainFunction {
 		{
 			System.out.println(use);
 		}
+		bark.Bark(one[0]);
 		
 		
 	}

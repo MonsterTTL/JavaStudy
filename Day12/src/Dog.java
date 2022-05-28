@@ -1,5 +1,5 @@
 //实现了Comparable 接口，可以使用Arrays.sort方法
-public class Dog implements Comparable<Dog>,Cloneable  {
+public class Dog implements Comparable<Dog>,Cloneable,bark  {
 	private String name;
 	private int age;
 	private int weight;
