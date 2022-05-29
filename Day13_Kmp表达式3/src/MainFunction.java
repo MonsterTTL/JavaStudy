@@ -17,10 +17,12 @@ public class MainFunction {
 		{
 			System.out.println(e);
 		}
-		Arrays.sort(use,Comparator.comparing(Person::getNameLength).thenComparing(Person::getAge));
+		//Arrays.sort(use,Comparator.comparing(Person::getNameLength).thenComparing(Person::getAge));
 		//后跟的thenComparing方法用来处理第一种比较相同的情况，若相同，再用thenComparing方法继续比较
 		//可以套娃
 		
+		Arrays.sort(use,Comparator.comparing(Person::getName,(s,t)-> s.length()-t.length()).thenComparing(Person::getAge));//为提取出的键
+		//又制定了一个比较器，或者说可以通俗的理解为重写了compareTo方法
 		
 		
 		//Arrays.sort(use,Comparator.comparing(Person::getName));
