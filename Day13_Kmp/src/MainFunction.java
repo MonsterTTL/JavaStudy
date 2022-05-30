@@ -5,13 +5,15 @@ public class MainFunction {
 	{
 		String father = "sasdsadasababaaabasdas";
 		String son = "ababaaaba";
-		//int result =TheKmp.Index1(father, son, 0);
-		//int result2 = TheKmp.Index2(father, son, 0);
-		//System.out.println(result);
-		//System.out.println(result2);
-		String test = "aaaaaaaaab";
-		System.out.println(Arrays.toString(TheKmp.getNext(test)));
-	    System.out.println(Arrays.toString(TheKmp.getNext2(test)));
+		int result =TheKmp.Index1(father, son, 0);
+		int result2 = TheKmp.Index2(father, son, 0);
+		int result3 = TheKmp.realKmp(father, son);
+		System.out.println(result);
+		System.out.println(result2);
+		System.out.println(result3);
+		//String test = "aaaaaaaaab";
+		//System.out.println(Arrays.toString(TheKmp.getNext(test)));
+	    //System.out.println(Arrays.toString(TheKmp.getNext2(test)));
 	    
 	    
 	}

@@ -82,6 +82,22 @@ public class TheKmp {
 			else j = next[j];
 		return next;
 	}
+	
+	public static int realKmp(String father,String son)
+	{
+		int n1 = father.length();int n2 = son.length();
+		int[] next = getNext2(son);
+		int i = 0;int j = 0;
+		while(i < n1 && j < n2)
+			if(j == -1 || father.charAt(i) == son.charAt(j))
+			{
+				i++;j++;
+			}
+			else
+			    j = next[j];
+		if(j >= n2-1)return i-n2;
+		else return -1;
+	}
 		
 
 }
