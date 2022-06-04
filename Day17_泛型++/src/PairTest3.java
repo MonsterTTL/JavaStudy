@@ -21,7 +21,7 @@ public class PairTest3 {
 		System.out.println("first : "+result.getFirst().getName()
 				+ " second: "+result.getSecond().getName());
 	}
-	public static void printBuilddies(Pair<? extends Employee>p)
+	public static <T extends Employee>void printBuilddies(Pair<T>p)
 	{
 		Employee first = p.getFirst();
 		Employee second = p.getSecond();
