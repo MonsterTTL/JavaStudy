@@ -77,6 +77,4 @@ enum gender{
 		return this.Gen;
 	}
 	
-	
-	
 }
