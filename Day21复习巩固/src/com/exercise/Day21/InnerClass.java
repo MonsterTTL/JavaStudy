@@ -1,5 +1,7 @@
 package com.exercise.Day21;
 
+import Outer;
+
 public class InnerClass {
 	public static void main(String[] args)
 	{
@@ -10,7 +12,8 @@ public class InnerClass {
 		
 		//StaOuter.inner a = new StaOuter.inner();
 		//a.print();
-		new StaOuter.inner().print();;
+		new StaOuter.inner().print();
+		StaOuter.inner2.print();
 	}
 
 }
@@ -51,6 +54,13 @@ class StaOuter{
 		public void print()
 		{
 			System.out.println("Who's Your Daddy?");
+		}
+	}
+	
+	static class inner2{
+		public static void print()
+		{
+			System.out.println("Im Your Daddy!");
 		}
 	}
 }
