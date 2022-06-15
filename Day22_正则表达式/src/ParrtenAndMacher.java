@@ -3,7 +3,7 @@ import java.util.regex.Pattern;
 
 public class ParrtenAndMacher {
 	public static void main(String[] args) {
-		String one = "我的号码15957293387，以前号码13185471756";
+		String one = "我的号码15555555555，以前号码15555555566";
 		String regx = "1[3579]\\d{9}";
 		
 		Pattern p = Pattern.compile(regx);
