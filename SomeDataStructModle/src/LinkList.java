@@ -6,8 +6,11 @@ public class LinkList {
 		one.add(2);
 		one.add(10);
 		Lk.showAll(one);
-		Lk.reverse(one);System.out.println();
+		Lk.reverse(one);
 		Lk.showAll(one);
+		int i = one.remove(0);
+		Lk.showAll(one);
+		System.out.println(i);
 		
 	}
 
@@ -34,6 +37,7 @@ class Lk{
 			System.out.print(nHead.getValue()+" ");
 			nHead = nHead.getNext();
 		}
+		System.out.println();
 	}
 	public int getValue()
 	{
@@ -73,5 +77,16 @@ class Lk{
 		head.setNext(cur);
 		
 		return true;
+	}
+	public int remove(int index)
+	{
+		Lk head = this;
+		for(int i = index;i > 0;i--)
+		{
+			head = head.getNext();
+		}
+		int i = head.getNext().getValue();
+		head.setNext(head.getNext().getNext());
+		return i;
 	}
 }
