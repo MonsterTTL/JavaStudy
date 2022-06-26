@@ -22,7 +22,7 @@ public class Demo2_Copy {
 	private static void demo1() throws IOException, FileNotFoundException {
 		FileWriter fw = new FileWriter("text.txt");
 		FileReader fr = new FileReader("text1.txt");//底层有一个1024字符大小的缓冲区
-		//字符流不能拷贝纯文本的文件
+		//字符流能拷贝纯文本的文件
 		int c;
 		while((c = fr.read()) != -1)
 		{

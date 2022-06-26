@@ -10,6 +10,7 @@ public class Demo6Chinese {
 		fos.write("Œ“»’".getBytes());
 		fos.write("\r\n".getBytes());
 		fos.write("nine?".getBytes());
+		
 		fos.close();
 	}
 
