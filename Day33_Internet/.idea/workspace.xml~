@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c62aa7a5-5603-4db8-b3a5-d86dbb12256c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Day32_ThreadReview/src/Demo3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day32_ThreadReview/src/Demo4_ReentrantLock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day32_ThreadReview/src/Demo5_ThreadGroup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day32_ThreadReview/src/Demo6_ThreadPool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day32_ThreadReview/src/Demo7_CallAble.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Day33_Internet.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Demo1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Demo1_Receive.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Demo2_Receive.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Demo2_Send.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day32_ThreadReview/out/production/Day32_ThreadReview/use.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Day32_ThreadReview/out/production/Day32_ThreadReview/use.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day32_ThreadReview/out/production/Day32_ThreadReview/use2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Day32_ThreadReview/out/production/Day32_ThreadReview/use2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day32_ThreadReview/src/Demo1.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Day32_ThreadReview/src/Demo1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day32_ThreadReview/src/Demo2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Day32_ThreadReview/src/Demo2.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="6dhrzwb6" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2BQ9j1TYi2aCA8tbCUw4QE28g2l" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.Demo2_Send">
+    <configuration name="Demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Demo1" />
+      <module name="Day33_Internet" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Demo2_Receive" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Demo2_Receive" />
+      <module name="Day33_Internet" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Demo2_Send" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Demo2_Send" />
+      <module name="Day33_Internet" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Demo2_Send" />
+        <item itemvalue="Application.Demo2_Receive" />
+        <item itemvalue="Application.Demo1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c62aa7a5-5603-4db8-b3a5-d86dbb12256c" name="Changes" comment="" />
+      <created>1656827574136</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1656827574136</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

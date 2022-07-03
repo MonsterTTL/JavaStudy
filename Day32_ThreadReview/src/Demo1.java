@@ -13,22 +13,22 @@ public class Demo1 {
 class use extends Thread{
 
     public void run()
-    { synchronized (use2.class){
+    { //synchronized (use2.class){
             for(int i = 0;i < 1000;i++)
             {
                 System.out.println(i);
             }
-        }
+  //      }
     }
 }
 
 class use2 implements Runnable{
     public void run(){
-        synchronized (use2.class) {
+       // synchronized (use2.class) {
             for (int i = 0; i < 1000; i++) {
                 System.out.println((char) ('a' + i));
             }
-        }
+      //  }
     }
 }
 
